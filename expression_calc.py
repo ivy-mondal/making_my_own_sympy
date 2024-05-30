@@ -1,21 +1,29 @@
-
-
+import math
 from tokenization_func import tokenize
 from rev_pol_nota import rev_pol_func
 from rpn_eval import evaluate_rpn
 
-
 if __name__ == "__main__":
-    print(evaluate_rpn(rev_pol_func(tokenize("((35+9)*2.5)/(3-1)"))))  # Should print 73.75
-    print(evaluate_rpn(rev_pol_func(tokenize("(10.5*(2+3.2))-(4.8/2)"))))  # Should print 51.32
-    print(evaluate_rpn(rev_pol_func(tokenize("((10-2.8)*3.5)/(2.2+1.8)"))))  # Should print 10.34
-    print(evaluate_rpn(rev_pol_func(tokenize("(10.2/(2.5+1.2))^2"))))  # Should print 4.11
-    print(evaluate_rpn(rev_pol_func(tokenize("(10.5+2.8)^2-(3.2*2.1)"))))  # Should print 83.11
-    print(evaluate_rpn(rev_pol_func(tokenize("10.2%((2.5+1.8)*3.2)"))))  # Should print 0.83
-
-print(eval(f"((35+9)*2.5)/(3-1)"))
-print(eval(f"(10.5*(2+3.2))-(4.8/2)"))
-print(eval(f"((10-2.8)*3.5)/(2.2+1.8)"))
-print(eval(f"(10.2/(2.5+1.2))**2"))
-print(eval(f"(10.5+2.8)**2-(3.2*2.1)"))
-print(eval(f"10.2%((2.5+1.8)*3.2)"))
+    print(evaluate_rpn(rev_pol_func(tokenize("sin(30)"))))  # should be approximately0.5)
+    print(evaluate_rpn(rev_pol_func(tokenize("cos(60)"))))  # should be approximately 0.5)
+    print(evaluate_rpn(rev_pol_func(tokenize("tan(45)"))))  # should  be approximately 1)
+    print(evaluate_rpn(rev_pol_func(tokenize("asin(0.5)"))))  # should be approximately 30)
+    print(evaluate_rpn(rev_pol_func(tokenize("acos(0.5)"))))  # should be approximately 60)
+if __name__ == "__main__":
+    print(tokenize("sin(30)"))
+    print(tokenize("cos(60)"))
+    print(tokenize("tan(45)"))
+    print(tokenize("asin(0.5)"))
+    print(tokenize("acos(0.5)"))
+if __name__ == "__main__":
+    print(rev_pol_func(['sin', '(', '30', ')']))
+    print(rev_pol_func(['cos', '(', '60', ')']))
+    print(rev_pol_func(['tan', '(', '45', ')']))
+    print(rev_pol_func(['asin', '(', '0.5', ')']))
+    print(rev_pol_func(['acos', '(', '0.5', ')']))
+if __name__ == "__main__":
+    print(evaluate_rpn(['30', 'sin']))
+    print(evaluate_rpn(['60', 'cos']))
+    print(evaluate_rpn(['45', 'tan']))
+    print(evaluate_rpn(['0.5', 'asin']))
+    print(evaluate_rpn(['0.5', 'acos']))

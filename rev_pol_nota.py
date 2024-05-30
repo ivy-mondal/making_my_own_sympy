@@ -1,11 +1,7 @@
 # Aim is to create a func which will convert tokens to postfix notations
 
 precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "%": 2, "^": 3}
-function_replacements = {"sinh": "Ψ", "cosh": "Φ", "tanh": "Ω", "cosech": "ξ", "sech": "ζ",
-                         "coth": "Θ", "arcsin": "丂", "arccosec": "万", "arccos": "七", "arctan": "丄", "arcsec": "丈",
-                         "arccot": "下", "sin": "$", "cosec": "Π", "cos": "€",
-                         "tan": "Δ", "sec": "ω", "cot": "Λ",
-                         "exp": "Ξ", "ln": "λ", "log": "β"}
+functions = ['sin', 'cos', 'tan', 'sec', 'cosec', 'cot', 'sinh', 'cosh', 'tanh', 'sech', 'cosech', 'coth', 'asin', 'acos', 'atan', 'asec', 'acosec', 'acot', 'asinh', 'acosh', 'atanh', 'acoth', 'asech', 'acosech', 'log', 'ln', 'exp']
 
 
 def is_numeric(token):
@@ -21,8 +17,11 @@ def rev_pol_func(tokens):
     operator_stack = []
 
     for token in tokens:
-        if token in function_replacements.values() or token.isalpha() or is_numeric(token):
+        if token in functions:
+            operator_stack.append(token)
+        elif token.isalpha() or is_numeric(token):
             output_queue.append(token)
+
         elif token == "(":
             operator_stack.append(token)
         elif token == ")":
