@@ -1,18 +1,21 @@
 #  Aim is to make a Tokenization function
 
-function_replacements = {"acosech": "ᾳ", "asinh": "α", "acosh": "Ά", "atanh": "ᾶ", "asech": "ἀ",
-                         "acoth": "ᾴ", "sinh": "Ψ", "cosh": "Φ", "tanh": "Ω", "cosech": "ξ", "sech": "ζ",
-                         "coth": "Θ", "asin": "丂", "acosec": "万", "acos": "七", "atan": "丄", "asec": "丈",
-                         "acot": "下", "sin": "$", "cosec": "Π", "cos": "€",
+function_replacements = {"acsch": "ᾳ", "asinh": "α", "acosh": "Ά", "atanh": "ᾶ", "asech": "ἀ",
+                         "acoth": "ᾴ", "sinh": "Ψ", "cosh": "Φ", "tanh": "Ω", "csch": "ξ", "sech": "ζ",
+                         "coth": "Θ", "asin": "丂", "acsc": "万", "acos": "七", "atan": "丄", "asec": "丈",
+                         "acot": "下", "sin": "$", "csc": "Π", "cos": "€",
                          "tan": "Δ", "sec": "ω", "cot": "Λ",
                          "exp": "Ξ", "ln": "λ", "log": "β"}
 
 backwards_replacement = {value: key for key, value in function_replacements.items()}
 
 
+import math
 def tokenize(user_input):
     user_input = user_input.replace(" ", "")
     user_input = user_input.lower()
+    user_input = user_input.replace('const_e', str(math.e))
+    user_input = user_input.replace('const_pi', str(math.pi))
     for func, rep in function_replacements.items():
         user_input = user_input.replace(func, str(rep))
     tokens = []
@@ -79,6 +82,8 @@ print(tokenize("5-3*cosh(2)"))
 print(tokenize("2^3+log(10)"))
 print(tokenize("sinh(2)+cosh(2)"))
 print(tokenize("tanh(2)+coth(2)"))
-print(tokenize("5*asech(2)-3*acoth(2)"))
+print(tokenize("5*asech(1)-3*acoth(1)"))
 """
 #print(tokenize("(-3 - 2 * (-5 - (-7 + 3))) - (-2 - 3 * (-4 - (-5 - 2))) + (-1 - 2 * (-3 - (-4 - 1)))"))
+#print(tokenize("ln(e)"))
+#print(tokenize("(sin(45) + cos(30) * tan(60) - ln((const_e)^2)"))

@@ -27,41 +27,41 @@ def evaluate_rpn(rpn_tokens):
         else:
             num = float(operands.pop())
             if token == "sinh":  # sinh
-                result = math.sinh(math.radians(num))
+                result = math.sinh(num)
             elif token == "cosh":  # cosh
-                result = math.cosh(math.radians(num))
+                result = math.cosh(num)
             elif token == "tanh":  # tanh
-                result = math.tanh(math.radians(num))
-            elif token == "cosech":  # cosech
-                result = 1 / math.sinh(math.radians(num))
+                result = math.tanh(num)
+            elif token == "csch":  # cosech
+                result = 1 / math.sinh(num)
             elif token == "sech":  # sech
-                result = 1 / math.cosh(math.radians(num))
+                result = 1 / math.cosh(num)
             elif token == "coth":  # coth
-                result = 1 / math.tanh(math.radians(num))
+                result = 1 / math.tanh(num)
             elif token == "asin":  # arcsin
-                result = math.asin(math.radians(num))
-            elif token == "acosec":  # arccosec
-                result = 1 / math.asin(math.radians(num))
+                result = math.asin(num)
+            elif token == "acsc":  # arccosec
+                result = 1 / math.asin(num)
             elif token == "acos":  # arccos
-                result = math.acos(math.radians(num))
+                result = math.acos(num)
             elif token == "atan":  # arctan
-                result = math.atan(math.radians(num))
+                result = math.atan(num)
             elif token == "asec":  # arcsec
-                result = 1 / math.acos(math.radians(num))
+                result = 1 / math.acos(num)
             elif token == "acot":  # arccot
-                result = 1 / math.atan(math.radians(num))
+                result = 1 / math.atan(num)
             elif token == "sin":  # sin
-                result = math.sin(math.radians(num))
-            elif token == "cosec":  # cosec
-                result = 1 / math.sin(math.radians(num))
+                result = math.sin(num)
+            elif token == "csc":  # cosec
+                result = 1 / math.sin(num)
             elif token == "cos":  # cos
-                result = math.cos(math.radians(num))
+                result = math.cos(num)
             elif token == "tan":  # tan
-                result = math.tan(math.radians(num))
+                result = math.tan(num)
             elif token == "sec":  # sec
-                result = 1 / math.cos(math.radians(num))
+                result = 1 / math.cos(num)
             elif token == "cot":  # cot
-                result = 1 / math.tan(math.radians(num))
+                result = 1 / math.tan(num)
             elif token == "exp":  # exp
                 result = math.exp(num)
             elif token == "ln":  # ln
@@ -69,17 +69,17 @@ def evaluate_rpn(rpn_tokens):
             elif token == "log":  # log10
                 result = math.log(num, 10)
             elif token == "acoth":  # acoth
-                result = 1 / math.atanh(math.radians(num))
-            elif token == "acosech":  # acosech
-                result = 1 / math.asinh(math.radians(num))
+                result = 1 / math.atanh(num)
+            elif token == "acsch":  # acosech
+                result = 1 / math.asinh(num)
             elif token == "asinh":  # asinh
-                result = math.asinh(math.radians(num))
+                result = math.asinh(num)
             elif token == "acosh":  # acosh
-                result = math.acosh(math.radians(num))
+                result = math.acosh(num)
             elif token == "atanh":  # atanh
-                result = math.atanh(math.radians(num))
+                result = math.atanh(num)
             elif token == "asech":  # asech
-                result = 1 / math.acosh(math.radians(num))
+                result = 1 / math.acosh(num)
             operands.append(result)
 
     return operands[0]
@@ -112,3 +112,22 @@ print(evaluate_rpn(rpn_tokens11))  # Should print the natural logarithm of 1
 print(evaluate_rpn(rpn_tokens12))  # Should print the base-10 logarithm of 1
 """
 #    print(evaluate_rpn(['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'ln', '+', 'x', 'log', '+', 'x', 'x', 'x', 'x', 'x', 'x', 'cot', '+', 'sec', '+', 'cosec', '+', 'tan', '+', 'cos', '+', 'sin', '+', 'exp', '+', 'acot', '+', 'asec', '+', 'acosec', '+', 'atan', '+', 'acos', '+', 'asin', '+', 'coth', '+', 'cosech', '+', 'sech', '+', 'tanh', '+', 'cosh', '+', 'sinh']))
+#print(evaluate_rpn(['-5', '-3', '5', '6', '-', '*', '-87', '*', '+']))
+#print(evaluate_rpn(['5', '2', '3', 'sin', '*', '+']))
+#print(evaluate_rpn(['2', 'exp', '3', 'ln', '*', '4', '-']))
+#print(evaluate_rpn(['0.5', 'acos', '0.5', 'asin', '+']))
+#print(evaluate_rpn(['1', 'atan', '1', 'acot', '+']))
+#print(evaluate_rpn(['2', 'asec', '2', 'acsc', '+']))
+#print(evaluate_rpn(['5', '3', '2', 'cosh', '*', '-']))
+#print(evaluate_rpn(['2', '3', '^', '10', 'log', '+']))
+#print(evaluate_rpn(['2', 'sinh', '2', 'cosh', '+']))
+#print(evaluate_rpn(['2', 'tanh', '2', 'coth', '+']))
+
+#print(evaluate_rpn(['-3', '2', '-5', '-7', '3', '+', '-', '*', '-', '-2', '3', '-4', '-5', '2', '-', '-', '*', '-', '-', '-1', '2', '-3', '-4', '1', '-', '-', '*', '-', '+']))
+"""
+#print(eval(f"-5+(-3)*(5-6)*-87"))
+#print(eval(f"5+2*math.sin(math.radians(3))"))
+"""
+
+
+#print(eval(f"(-3 - 2 * (-5 - (-7 + 3))) - (-2 - 3 * (-4 - (-5 - 2))) + (-1 - 2 * (-3 - (-4 - 1)))"))
